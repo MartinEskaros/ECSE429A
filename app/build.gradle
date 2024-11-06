@@ -33,6 +33,36 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:5.3.0'
     testImplementation 'org.hamcrest:hamcrest:2.2'
 
+    testImplementation 'io.cucumber:cucumber-java:7.11.2'
+    testImplementation 'io.cucumber:cucumber-junit:7.11.2'
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    implementation 'org.json:json:20210307'
+
+
+    testImplementation 'io.cucumber:cucumber-java:7.11.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.11.0'
+    testImplementation 'io.rest-assured:rest-assured:5.3.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+
+    testImplementation 'io.cucumber:cucumber-java:7.0.0'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.0.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
+    testImplementation 'io.cucumber:cucumber-java:7.11.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.11.0'
+    testImplementation 'io.rest-assured:rest-assured:5.3.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testImplementation 'com.google.code.gson:gson:2.10.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation 'org.slf4j:slf4j-api:2.0.7'
+    testImplementation 'ch.qos.logback:logback-classic:1.4.6'
+
+
+
+
 
 }
 
@@ -49,8 +79,20 @@ application {
 }
 
 test {
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
+    useJUnitPlatform()
+    systemProperty "cucumber.junit-platform.naming-strategy", "long"
+    systemProperty "cucumber.publish.quiet", "true"
+}
+
+task cucumberTests(type: Test) {
+    description = 'Runs cucumber tests'
+    dependsOn assemble, testClasses
+
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+
+    systemProperty "cucumber.plugin", "pretty, html:build/reports/cucumber/report.html"
+    systemProperty "cucumber.glue", "stepdefinitions"  // Updated to match your package structure
+    systemProperty "cucumber.features", "src/test/resources/features"
 }
 
