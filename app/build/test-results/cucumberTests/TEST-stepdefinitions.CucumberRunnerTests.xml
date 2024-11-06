@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="stepdefinitions.CucumberRunnerTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-11-06T04:13:05" hostname="Martins-MBP" time="0.0">
+<testsuite name="stepdefinitions.CucumberRunnerTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-11-06T04:40:10" hostname="Martins-MBP" time="0.001">
   <properties/>
-  <testcase name="classMethod" classname="stepdefinitions.CucumberRunnerTests" time="0.0">
+  <testcase name="classMethod" classname="stepdefinitions.CucumberRunnerTests" time="0.001">
     <failure message="io.cucumber.java.InvalidMethodException: You're not allowed to extend classes that define Step Definitions or hooks. class stepdefinitions.DeleteTodoSteps extends class stepdefinitions.BaseSteps" type="io.cucumber.java.InvalidMethodException">io.cucumber.java.InvalidMethodException: You're not allowed to extend classes that define Step Definitions or hooks. class stepdefinitions.DeleteTodoSteps extends class stepdefinitions.BaseSteps
 	at app//io.cucumber.java.InvalidMethodException.createInvalidMethodException(InvalidMethodException.java:16)
 	at app//io.cucumber.java.MethodScanner.validateMethod(MethodScanner.java:76)
